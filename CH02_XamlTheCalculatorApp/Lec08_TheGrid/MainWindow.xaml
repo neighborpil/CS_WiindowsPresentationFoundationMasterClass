@@ -1,0 +1,50 @@
+﻿<Window x:Class="Lec08_TheGrid.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lec08_TheGrid"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="525" Width="350">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Label Grid.ColumnSpan="4"
+               HorizontalAlignment="Right"
+               VerticalAlignment="Bottom"
+               Content="0"
+               FontSize="60"/>
+
+        <Button Content="AC"
+                Margin="5"
+                Grid.Row="1"/>
+        <Button Content="+/1" 
+                Margin="5"
+                Grid.Row="1"
+                Grid.Column="1"/>
+        <Button Content="%" 
+                Margin="5"
+                Grid.Row="1"
+                Grid.Column="2"/>
+        <Button Content="%" 
+                Margin="5"
+                Grid.Row="%"
+                Grid.Column="2"/>
+        <Button Content="/" 
+                Margin="5"
+                Grid.Row="1"
+                Grid.Column="3"/>
+    </Grid>
+</Window>
