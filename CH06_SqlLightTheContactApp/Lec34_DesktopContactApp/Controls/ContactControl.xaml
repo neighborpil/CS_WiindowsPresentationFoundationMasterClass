@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="Lec34_DesktopContactApp.Controls.ContactControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Lec34_DesktopContactApp.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="90" d:DesignWidth="300">
+    <Grid Background="#AAE5E5E5"> <!--ARGB => 순서에 주의!-->
+        <StackPanel Margin="5">
+            <TextBlock x:Name="NameTextBlock"
+                       Text="Name Lastname"
+                       FontSize="20"
+                       FontWeight="Bold"/>
+            <TextBlock x:Name="EmailTextBlock"
+                       Text="example@domain.com"
+                       FontSize="15"
+                       Foreground="DodgerBlue"/>
+            <TextBlock x:Name="PhoneTextBlock"
+                       Text="(123) 456 789"
+                       FontSize="15"
+                       FontStyle="Italic"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

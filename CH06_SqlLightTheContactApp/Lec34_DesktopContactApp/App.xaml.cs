@@ -13,5 +13,10 @@ namespace Lec34_DesktopContactApp
     /// </summary>
     public partial class App : Application
     {
+
+        static string _databaseName = "Contacts.db";
+        static string _forderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        public static string DatabasePath = System.IO.Path.Combine(_forderPath, _databaseName);
+
     }
 }

@@ -4,10 +4,23 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lec34_DesktopContactApp"
+        xmlns:uc="clr-namespace:Lec34_DesktopContactApp.Controls"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <StackPanel Margin="10">
         <Button Content="New contact"
                 Click="ButtonBase_OnClick"/>
+        <TextBox Margin="0 5 0 5"
+                 TextChanged="TextBoxBase_OnTextChanged"/>
+        <ListView x:Name="ContactsListView"
+                  Height="280"
+                  SelectionChanged="ContactsListView_OnSelectionChanged"
+                  Margin="0 5 0 0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <uc:ContactControl Contact="{Binding}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackPanel>
 </Window>

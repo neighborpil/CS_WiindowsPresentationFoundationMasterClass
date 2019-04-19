@@ -24,6 +24,7 @@ namespace Lec34_DesktopContactApp
         public NewContactWindow()
         {
             InitializeComponent();
+
         }
 
         private void SaveButton_OnClick(object sender, RoutedEventArgs e)
@@ -36,15 +37,11 @@ namespace Lec34_DesktopContactApp
                 Phone = PhoneNumberTextBox.Text
             };
 
-            string databaseName = "Contacts.db";
-            string forderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string databasePath = System.IO.Path.Combine(forderPath, databaseName);
-
-            SQLiteConnection connection = new SQLiteConnection(databasePath);
-            connection.CreateTable<Contact>();
-            connection.Insert(contact);
-            connection.Close();
-
+            using (SQLiteConnection connection = new SQLiteConnection(App.DatabasePath))
+            {
+                connection.CreateTable<Contact>();
+                connection.Insert(contact);
+            }
             this.Close();
         }
     }
