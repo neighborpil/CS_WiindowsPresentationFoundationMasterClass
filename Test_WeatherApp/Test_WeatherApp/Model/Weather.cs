@@ -3,20 +3,18 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
-using Lec66_WeatherApp.Annotations;
+using Test_WeatherApp.Annotations;
 
-namespace Lec66_WeatherApp.Model
+namespace Test_WeatherApp.Model
 {
-    public class Minimum : INotifyPropertyChanged
+    public class Degree : INotifyPropertyChanged
     {
         private double _value;
         public double Value
         {
-            get => _value;
+            get { return _value; }
             set
             {
                 _value = value;
@@ -24,45 +22,13 @@ namespace Lec66_WeatherApp.Model
             }
         }
 
-        private string _unit;
+        private string unit;
         public string Unit
         {
-            get => _unit;
+            get { return unit; }
             set
             {
-                _unit = value;
-                OnPropertyChanged("Unit");
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-    }
-
-    public class Maximum : INotifyPropertyChanged
-    {
-        private double _value;
-        public double Value
-        {
-            get => _value;
-            set
-            {
-                _value = value;
-                OnPropertyChanged("Value");
-            }
-        }
-
-        private string _unit;
-        public string Unit
-        {
-            get => _unit;
-            set
-            {
-                _unit = value;
+                unit = value;
                 OnPropertyChanged("Unit");
             }
         }
@@ -77,24 +43,24 @@ namespace Lec66_WeatherApp.Model
 
     public class Temperature : INotifyPropertyChanged
     {
-        private Minimum _minimum;
-        public Minimum Minimum
+        private Degree minimum;
+        public Degree Minimum
         {
-            get { return _minimum; }
+            get { return minimum; }
             set
             {
-                _minimum = value;
+                minimum = value;
                 OnPropertyChanged("Minimum");
             }
         }
 
-        private Maximum _maximum;
-        public Maximum Maximum
+        private Degree maximum;
+        public Degree Maximum
         {
-            get { return _maximum; }
+            get { return maximum; }
             set
             {
-                _maximum = value;
+                maximum = value; 
                 OnPropertyChanged("Maximum");
             }
         }
@@ -106,30 +72,8 @@ namespace Lec66_WeatherApp.Model
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-
-    public class Day : INotifyPropertyChanged
-    {
-        private string iconPhrase;
-
-        public string IconPhrase
-        {
-            get { return iconPhrase; }
-            set
-            {
-                iconPhrase = value;
-                OnPropertyChanged("IconPhrase");
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-    }
-
-    public class Night : INotifyPropertyChanged
+    
+    public class Phase : INotifyPropertyChanged // Day or Night
     {
         private string iconPhrase;
 
@@ -175,8 +119,8 @@ namespace Lec66_WeatherApp.Model
             }
         }
 
-        private Day day;
-        public Day Day
+        private Phase day;
+        public Phase Day
         {
             get { return day; }
             set
@@ -186,8 +130,8 @@ namespace Lec66_WeatherApp.Model
             }
         }
 
-        private Night night;
-        public Night Night
+        private Phase night;
+        public Phase Night
         {
             get { return night; }
             set
@@ -207,13 +151,15 @@ namespace Lec66_WeatherApp.Model
 
     public class Weather : INotifyPropertyChanged
     {
-        private List<DailyForecast> _dailyForecasts;
+        //public List<DailyForecast> DailyForecasts { get; set; }
+        private List<DailyForecast> dailyForecasts;
+
         public List<DailyForecast> DailyForecasts
         {
-            get { return _dailyForecasts; }
+            get { return dailyForecasts; }
             set
             {
-                _dailyForecasts = value;
+                dailyForecasts = value;
                 OnPropertyChanged("DailyForecasts");
             }
         }
@@ -223,16 +169,6 @@ namespace Lec66_WeatherApp.Model
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        public Weather()
-        {
-            //if (DesignerProperties.GetIsInDesignMode(new DependencyObject())) // 런타임에서는 안보이고, 디자인에서만 보인다
-            //{
-
-            //}
-
-            DailyForecasts = new List<DailyForecast>();
         }
     }
 }
