@@ -19,7 +19,7 @@
         <StackPanel Margin="10">
             <Button Content="Refresh"
                     Command="{Binding Source={StaticResource vm}, Path=RefreshCommand}"
-                    CommandParameter="{Binding Source={StaticResource vm}, Path=Cities}"
+                    CommandParameter="{Binding Source={StaticResource vm}, Path=Weather}"
                     Margin="0 0 0 10"/>
             <TextBox Text="{Binding Source={StaticResource vm}, Path=Query, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <ListView Margin="0 10 0 0"
