@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -24,8 +25,6 @@ namespace Lec90_NotesApp.View
     public partial class NotesWindow : Window
     {
         private SpeechRecognitionEngine recognizer;
-        private bool isRecognizing = false;
-
 
         public NotesWindow()
         {
@@ -52,16 +51,11 @@ namespace Lec90_NotesApp.View
 
         private void SpeechButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if(!isRecognizing)
-            {
+            bool isButtonEnabled = (sender as ToggleButton).IsChecked ?? false;
+            if(!isButtonEnabled)
                 recognizer.RecognizeAsync(RecognizeMode.Multiple);
-                isRecognizing = true;
-            }
             else
-            {
                 recognizer.RecognizeAsyncStop();
-                isRecognizing = false;
-            }
         }
 
         private void Recognizer_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
@@ -82,15 +76,27 @@ namespace Lec90_NotesApp.View
 
         private void BoldButton_OnClick(object sender, RoutedEventArgs e)
         {
-            var fontWeight = FontWeights.Bold;
+            bool isButtonEnabled = (sender as ToggleButton).IsChecked ?? false;
+            if (isButtonEnabled)
+                ContentRichTextBox.Selection.ApplyPropertyValue(FontWeightProperty, FontWeights.Bold);
+            else
+                ContentRichTextBox.Selection.ApplyPropertyValue(FontWeightProperty, FontWeights.Normal);
 
-            var isBold = ContentRichTextBox.Selection.GetPropertyValue(FontWeightProperty)
-                .Equals(FontWeights.Bold);
-            if (isBold)
-                fontWeight = FontWeights.Normal;
+            //var fontWeight = FontWeights.Bold;
 
-            ContentRichTextBox.Selection.ApplyPropertyValue(FontWeightProperty, fontWeight);
+            //var isBold = ContentRichTextBox.Selection.GetPropertyValue(FontWeightProperty)
+            //    .Equals(FontWeights.Bold);
+            //if (isBold)
+            //    fontWeight = FontWeights.Normal;
+
+            //ContentRichTextBox.Selection.ApplyPropertyValue(FontWeightProperty, fontWeight);
         }
 
+        private void ContentRichTextBox_OnSelectionChanged(object sender, RoutedEventArgs e)
+        {
+            var selectedState = ContentRichTextBox.Selection.GetPropertyValue(FontWeightProperty);
+            BoldButton.IsChecked = (selectedState != DependencyProperty.UnsetValue) && (selectedState.Equals(FontWeights.Bold));
+
+        }
     }
 }
