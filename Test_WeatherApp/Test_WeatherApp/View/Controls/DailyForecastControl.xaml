@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Test_WeatherApp.View.Controls"
+             xmlns:control="clr-namespace:Test_WeatherApp.View.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="500">
     <UserControl.Resources>
@@ -19,6 +20,7 @@
             <Setter Property="Foreground" Value="Black"></Setter>
             <Setter Property="FontWeight" Value="Bold"></Setter>
         </Style>
+        <control:DailyForecastControl x:Key="Ctl"/>
     </UserControl.Resources>
     <Border BorderThickness="0 0 0 1"
             BorderBrush="Black">
@@ -85,8 +87,11 @@
             <Label x:Name="MaximumLabel"
                Grid.Row="3"
                Grid.Column="2"
-               Style="{StaticResource ResultLabelStyle}"
-               Content="30.3"/>
+               Style="{StaticResource ResultLabelStyle}">
+                <MultiBinding StringFormat="{}{0}º{1}}">
+                    <Binding Path=""></Binding>
+                </MultiBinding>
+            </Label>
             <Label Grid.Row="3"
                Grid.Column="3"
                Style="{StaticResource LabelStyle}"

@@ -5,10 +5,8 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-using Autofac;
-using Test_WeatherApp.ViewModel;
 
-namespace Test_WeatherApp
+namespace NotesApp
 {
     /// <summary>
     /// Interaction logic for App.xaml

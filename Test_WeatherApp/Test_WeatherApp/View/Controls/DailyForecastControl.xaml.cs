@@ -25,36 +25,36 @@ namespace Test_WeatherApp.View.Controls
         private DateTime date;
         public DateTime Date
         {
-            get => (DateTime)GetValue(ContentProperty);
-            set => SetValue(ContentProperty, value);
+            get => (DateTime)GetValue(DateProperty);
+            set => SetValue(DateProperty, value);
         }
 
         private double minimum;
         public double Minimum
         {
-            get => (double)GetValue(ContentProperty);
-            set => SetValue(ContentProperty, value);
+            get => (double)GetValue(MinimumProperty);
+            set => SetValue(MinimumProperty, value);
         }
 
         private double maximum;
         public double Maximum
         {
-            get => (double)GetValue(ContentProperty);
-            set => SetValue(ContentProperty, value);
+            get => (double)GetValue(MaximumProperty);
+            set => SetValue(MaximumProperty, value);
         }
 
         private string day;
         public string Day
         {
-            get => (string)GetValue(ContentProperty);
-            set => SetValue(ContentProperty, value);
+            get => (string)GetValue(DayProperty);
+            set => SetValue(DayProperty, value);
         }
 
         private string night;
         public string Night
         {
-            get => (string)GetValue(ContentProperty);
-            set => SetValue(ContentProperty, value);
+            get => (string)GetValue(NightProperty);
+            set => SetValue(NightProperty, value);
         }
 
         public static readonly DependencyProperty DateProperty =
@@ -138,7 +138,6 @@ namespace Test_WeatherApp.View.Controls
                 }
             }
         }
-
 
         public DailyForecastControl()
         {

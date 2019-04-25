@@ -11,8 +11,8 @@ namespace Test_WeatherApp.ViewModel
 {
     public interface IWeatherApi
     {
-        Task<Weather> GetForecast(string key);
-        Task<List<City>> GetCities(string key);
+        Task<Weather> GetForecastAsync(string key);
+        Task<List<City>> GetCitiesAsync(string key);
     }
 
     public class WeatherApi : IWeatherApi
@@ -27,7 +27,7 @@ namespace Test_WeatherApp.ViewModel
             _apiKey = apikey;
         }
 
-        public async Task<Weather> GetForecast(string key)
+        public async Task<Weather> GetForecastAsync(string key)
         {
             Weather weather = null;
 
@@ -43,7 +43,7 @@ namespace Test_WeatherApp.ViewModel
             return weather;
         }
 
-        public async Task<List<City>> GetCities(string key)
+        public async Task<List<City>> GetCitiesAsync(string key)
         {
             List<City> cities = new List<City>();
             string url = string.Format(AUTOCOMPLETE_BASE_URL, _apiKey, key);

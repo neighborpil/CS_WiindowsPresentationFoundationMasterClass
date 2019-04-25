@@ -28,7 +28,7 @@
                     Background="Thistle"
                     BorderThickness="1 1 1 0"
                     BorderBrush="DimGray">
-                <Label Content="Weather Info"
+                <Label Content="天気予報 検索"
                        FontSize="28"
                        FontWeight="ExtraBold"
                        Foreground="OrangeRed"
@@ -42,21 +42,41 @@
                     VerticalContentAlignment="Stretch"
                     HorizontalContentAlignment="Stretch"
                     FontSize="20"
-                    Margin="0 0 0 5"/>
+                    Margin="0 0 0 5"
+                    Command="{Binding RefreshCommand}"
+                    CommandParameter="{Binding Weather}"/>
             <Border Grid.Row="2"
                     Background="LightSalmon"
                     BorderThickness="1 1 1 0"
                     BorderBrush="DimGray">
                 <Label Content="Search"
                        FontSize="20"
-                       HorizontalAlignment="Center"/>
+                       HorizontalContentAlignment="Center"
+                       VerticalContentAlignment="Center"/>
             </Border>
             <TextBox Grid.Row="3"
                      x:Name="searchTextBlock"
                      FontSize="20"
+                     Text="{Binding Query, UpdateSourceTrigger=PropertyChanged}"
                      VerticalContentAlignment="Center"/>
             <ListView Grid.Row="4"
-                      x:Name="CitiesListview">
+                      x:Name="CitiesListview"
+                      SelectedItem="{Binding SelectedCity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                      ItemsSource="{Binding Cities}"
+                      HorizontalContentAlignment="Stretch">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0} {1} {2}">
+                                    <Binding Path="LocalizedName"/>
+                                    <Binding Path="AdministrativeArea.LocalizedName"/>
+                                    <Binding Path="Country.LocalizedName"/>
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
 
             </ListView>
         </Grid>

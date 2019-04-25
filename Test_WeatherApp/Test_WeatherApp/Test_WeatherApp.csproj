@@ -68,6 +68,8 @@
     <Compile Include="Model\City.cs" />
     <Compile Include="Model\Weather.cs" />
     <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="ViewModel\Commands\RefreshCommand.cs" />
+    <Compile Include="ViewModel\Converter\TemperatureWithUnitConverter.cs" />
     <Compile Include="ViewModel\WeatherApi.cs" />
     <Compile Include="ViewModel\WeatherVM.cs" />
     <Compile Include="View\Controls\DailyForecastControl.xaml.cs">
