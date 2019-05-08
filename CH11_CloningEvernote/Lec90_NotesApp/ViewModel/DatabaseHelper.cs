@@ -60,6 +60,7 @@ namespace Lec90_NotesApp.ViewModel
             List<T> results;
             using (var conn = new SQLiteConnection(dbFile))
             {
+                conn.CreateTable<T>();
                 results = conn.Table<T>().ToList();
             }
 

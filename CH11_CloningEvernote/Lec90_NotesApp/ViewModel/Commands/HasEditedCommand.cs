@@ -8,32 +8,28 @@ using Lec90_NotesApp.Model;
 
 namespace Lec90_NotesApp.ViewModel.Commands
 {
-    public class LoginCommand : ICommand
+    public class HasEditedCommand : ICommand
     {
-        public LoginVM VM { get; set; }
+        public NotesVM Vm { get; set; }
         public event EventHandler CanExecuteChanged;
 
-        public LoginCommand(LoginVM vm)
+        public HasEditedCommand(NotesVM vm)
         {
-            VM = vm;
+            Vm = vm;
         }
 
         public bool CanExecute(object parameter)
         {
-
-            var user = parameter as User;
-            //if (user == null)
-            //    return false;
-            //if (string.IsNullOrWhiteSpace(user.Username))
-            //    return false;
-            //if (string.IsNullOrWhiteSpace(user.Password))
-            //    return false;
             return true;
         }
 
         public void Execute(object parameter)
         {
-            VM.Login();
+            if(parameter is Notebook notebook)
+            {
+                Vm.HasReNamed(notebook);
+            }
+
         }
 
     }

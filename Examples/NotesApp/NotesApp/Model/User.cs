@@ -57,6 +57,7 @@ namespace NotesApp.Model
             }
         }
 
+
         private string email;
         public string Email
         {

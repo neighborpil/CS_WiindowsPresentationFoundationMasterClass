@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Lec90_NotesApp.ViewModel;
 
 namespace Lec90_NotesApp.View
 {
@@ -22,6 +23,28 @@ namespace Lec90_NotesApp.View
         public LoginWindow()
         {
             InitializeComponent();
+
+            LoginVM vm = new LoginVM();
+            ContainerGrid.DataContext = vm;
+            vm.HasLoggedIn += VM_HasLoggedIn;
+
+        }
+
+        private void VM_HasLoggedIn(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void HaveAccountButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            RegisterStackPanel.Visibility = Visibility.Collapsed;
+            LoginStackPanel.Visibility = Visibility.Visible;
+        }
+
+        private void NoAccountButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            LoginStackPanel.Visibility = Visibility.Collapsed;
+            RegisterStackPanel.Visibility = Visibility.Visible;
         }
     }
 }

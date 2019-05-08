@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="Lec90_NotesApp.View.UserControls.NoteBook"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Lec90_NotesApp.View.UserControls"
+             mc:Ignorable="d"
+             Background="MidnightBlue"
+             d:DesignHeight="100" d:DesignWidth="300">
+    <Grid>
+        <TextBlock x:Name="NotebookNameTextBox"
+                   Text="DisplayNotebook name"
+                   Foreground="White"
+                   Margin="20"
+                   FontSize="15"
+                   VerticalAlignment="Center"/>
+    </Grid>
+</UserControl>
